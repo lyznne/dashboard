@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bgSoft);
+    padding: 1rem  20px;
+    border-radius: 10px;
+}
+
+.title {
+    color: var(--textSoft);
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #2e374a;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.input {
+    background-color: transparent;
+    border: none;
+    color: var(--text);
+    outline: none;
+   
+}
+
+.input:focus {
+    border: none;
+    
+}
+
+.icons {
+    display: flex;
+    gap: 20px;
+}
+
