@@ -46,7 +46,7 @@ const AddProductPage = () => {
         ></textarea>
 
         <button type="submit" className={styles.button}>
-          {" "}
+       
           Submit
         </button>
       </form>
