@@ -45,4 +45,9 @@
     display: flex;
     gap: 20px;
 }
-
+.icons * {
+    cursor: pointer;
+}
+.icons *:hover {
+    color: var(--textSoft);
+}
