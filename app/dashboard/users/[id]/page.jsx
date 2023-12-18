@@ -1,43 +1,51 @@
+import { updateUser } from "@/app/lib/actions"
+import { fetchSingleUser } from "@/app/lib/data"
 import styles from "@/app/ui/dashboard/users/singleUser/singleUser.module.css"
 import Image from "next/image"
 
-const SingleUserPage = () => {
+const SingleUserPage = async ( {params}) => { 
+    const { id }  = params
+    const user = await fetchSingleUser(id) 
+
+
+
     return (
 
         <div className={styles.container}>
             <div className={styles.info}>
                 <div className={styles.imgContainer} >
-                    <Image src="/admin.jpg" alt="" fill className={styles.img} />
+                    <Image src={user.img || "/admin.jpg" } alt="" fill className={styles.img} />
                 </div>
-                John Doe
+                {user.username}
             </div>
             <div className={styles.formContainer}>
-                <form action="" className={styles.form}>
+                <form action={updateUser} className={styles.form}> 
+                <input name="id" type="hidden" value={user.id}/>
                     <label >Username</label>
-                    <input type="text" name="username" placeholder="Johnn doe" />
+                    <input type="text" name="username"  placeholder= {user.username} />
 
                     <label >Email</label>
-                    <input type="email" name="email" placeholder="Johndoe@gmail.com" />
+                    <input type="email" name="email"  placeholder= {user.email}/>
 
                     <label >password</label>
-                    <input type="password" name="password" placeholder="***********" />
+                    <input type="password" name="password"  placeholder= "***********" />
 
                     <label >phone</label>
-                    <input type="text" name="phone" placeholder="+254 7574 875 783" />
+                    <input type="text" name="phone"  placeholder= {user.phone} />
 
                     <label >address</label>
-                    <textarea name="address" id="address" rows="6" placeholder="addres 20, 50"></textarea>
+                    <textarea name="address" id="address" rows="6"  placeholder={user.address}></textarea>
 
                     <label>Is Admin ?</label>
                     <select name="isAdmin" id="isAdmin">
-                        <option value={true}>Yes</option>
-                        <option value={false}>No</option>
+                        <option value={true} selected={user.isAdmin}>Yes</option>
+                        <option value={false} selected={!user.isAdmin}>No</option>
                     </select>
 
                     <label>Is Active ?</label>
                     <select name="isActive" id="isActive">
-                        <option value={true}>Yes</option>
-                        <option value={false}>No</option>
+                        <option value={true} selected={user.isActive}>Yes</option>
+                        <option value={false} selected={!user.isActive}>No</option>
                     </select>
 
 
