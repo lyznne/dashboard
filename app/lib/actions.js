@@ -3,6 +3,7 @@ import { Product, User } from "./models";
 import { connectToDB } from "./utils";
 import { revalidatePath } from "next/cache";
 import bcrypt from "bcrypt";
+import { signIn } from "../auth";
 
 export const addUser = async (formData) => {
   "use server";
@@ -167,3 +168,21 @@ export const updateProduct = async (formData) => {
     //redirect
     redirect("/dashboard/products");
   };
+
+
+  export const authenticate =  async (formData) => {
+    "use server"
+    const { username, password } = Object.fromEntries(formData);
+
+    if (typeof username === "undefined" || typeof password === "undefined") {
+      throw new Error("Invalid credentials");
+    }
+
+
+    try{
+      await signIn("credentials", { username, password })
+    } catch(err) {
+     console.log(err)
+     throw err
+    }
+  }
