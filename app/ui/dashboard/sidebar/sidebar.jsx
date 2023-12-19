@@ -4,6 +4,7 @@ import styles from './sidebar.module.css';
 import { MdDashboard, MdSupervisedUserCircle, MdShoppingBag, MdAttachMoney, MdWork, MdAnalytics, MdOutlineSettings, MdHelpCenter, MdLogout, MdPeople, } from "react-icons/md"
 import MenuLink from './menuLink/menuLink';
 import Image from 'next/image';
+import { auth, signOut } from '@/app/auth';
 
 
 const menuItems = [
@@ -65,47 +66,54 @@ const menuItems = [
                 path: "dashboard/help",
                 icon: <MdHelpCenter />,
             },
-           
+
         ],
     },
 ]
 
 
 
-const Sidebar = () => {
+const Sidebar = async () => {
+    const {user} = await auth();
     return (
         <div className={styles.container}>
             <div className={styles.user}>
-                <Image src="/admin.jpg" alt="" width={50} height={50} className={ styles.userImage } />
-                <div className={ styles.userDetail }>
-                    <span className={ styles.username }>Enos muthiani</span>
-                    <span className={ styles.userTitle  }>admin</span>
+                <Image src={ user.img || "/admin.jpg" } alt="" width={50} height={50} className={styles.userImage} />
+                <div className={styles.userDetail}>
+                    <span className={styles.username}>{user.username}</span>
+                    <span className={styles.userTitle}>admin</span>
                 </div>
             </div>
 
 
-            <ul className={ styles.list } > 
+            <ul className={styles.list} >
                 {menuItems.map((category) => (
                     <li key={category.title}>
-                        <span className={ styles.cat }>
-                            {category.title }
+                        <span className={styles.cat}>
+                            {category.title}
                         </span>
                         {
                             category.list.map((item) => (
                                 <MenuLink item={item} key={item.title} />
                             ))
                         }
-                        
+
                     </li>
                 ))}
             </ul>
 
 
             {/* log out  */}
-            <button className={ styles.logout }>
-                <MdLogout />
-                Logout 
-            </button>
+            <form action={async () => {
+                "use server"
+                await signOut();
+            }}>
+                <button className={styles.logout}>
+                    <MdLogout />
+                    Logout
+                </button>
+            </form>
+
 
         </div>
     )

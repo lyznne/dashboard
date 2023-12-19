@@ -1,22 +1,28 @@
+
 export const authConfig = {
-    providers: [],
+    providers: [], 
     pages: {
         signIn: "/login",
     },
     callbacks: {
         authorized({
-            auth,   request
-        }) {
-            const isLoggedIn = auth?.user 
-            const isOnDashboard = request.nextUrl.pathname.startsWith("/dashboard")
+            auth, request
+        })
+         {
+            const isLoggedIn = auth?.user;
+            const isOnDashboard = request.nextUrl?.pathname.startsWith("/dashboard");
 
             if (isOnDashboard) {
-                if(isLoggedIn) return true 
-                return   false
-            } else if (isLoggedIn){
-                return Response.redirect(new URL("/dashboard", request.nextUrl))
+                if (isLoggedIn) return true;
+                return false;
+            } else if (isLoggedIn) {
+               
+                // console.log(request.nextUrl);
+                return Response.redirect(new URL("/dashboard", request.nextUrl));
+                
             }
-            return true 
+            return true;
         }
-    }
-}
+    },
+    trustHost: true
+};

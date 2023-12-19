@@ -170,19 +170,17 @@ export const updateProduct = async (formData) => {
   };
 
 
-  export const authenticate =  async (formData) => {
-    "use server"
+  export const authenticate =  async (prevState, formData) => {
     const { username, password } = Object.fromEntries(formData);
 
-    if (typeof username === "undefined" || typeof password === "undefined") {
-      throw new Error("Invalid credentials");
-    }
+    // if (typeof username === "undefined" || typeof password === "undefined") {
+    //   throw new Error("Invalid credentials");
+    // }
 
 
     try{
       await signIn("credentials", { username, password })
     } catch(err) {
-     console.log(err)
-     throw err
+    return "Wrong credentials!"
     }
   }
