@@ -5,31 +5,3 @@
     align-items: center;
     justify-content: center;
 }
-.form {
-    background: var(--bgSoft);
-    padding:20px 30px;
-    border-radius: 10px;
-    width: 500px;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 30px;
-}
-.form input {
-    padding: 1rem 1.2rem;
-    border: 1px solid #2e374a;
-    border-radius: 5px;
-    color: var(--text);
-    background: var(--bg);
-    outline: none;
-}
-.form button {
-      padding: 1rem 1.2rem;
-    background: teal;
-    color: var(--text);
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-
-}

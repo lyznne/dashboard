@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "@/app/ui/dashboard/products/singleProduct/singleProduct.module.css";
 import { fetchSingleProduct } from "@/app/lib/data";
-import { updateProduct } from "@/app/lib/actions";
+import { updateProduct } from "@/app/lib/actions-server";
 
 const SingleProductPage = async ({ params }) => {
   const { id } = params;
