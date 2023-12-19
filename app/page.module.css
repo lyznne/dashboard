@@ -1,17 +1,205 @@
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
+  padding: 1rem 2rem;
+
   min-height: 100vh;
 }
 
+/* .main * {border: 1px solid red;} */
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.top span {
+  color: coral;
+  margin-left: 0.15rem;
+}
+
+
+.container {
+  height: 80vh;
+  width: 100vh;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.homeIcon {
+  font-size: 20px;
+  height: 35px;
+  width: 35px;
+  margin-right: 5px;
+}
+
+.btns {
+  margin: 1rem 6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btnProceed {
+  cursor: pointer;
+  padding: 10px 2rem;
+  border: .5px solid var(--text);
+  outline: 3px solid rgba(230, 230, 250, 0.219);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text);
+  text-align: center;
+  outline: none;
+
+}
+
+.Btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  /* overflow: hidden; */
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.svgContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  backdrop-filter: blur(0px);
+  letter-spacing: 0.8px;
+  border-radius: 10px;
+  transition: all .3s;
+  border: 1px solid rgba(156, 156, 156, 0.466);
+}
+
+.BG {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #181818;
+  z-index: -1;
+  border-radius: 10px;
+  pointer-events: none;
+  transition: all .3s;
+}
+
+.Btn:hover .BG {
+  transform: rotate(35deg);
+  transform-origin: bottom;
+}
+
+.Btn:hover .svgContainer {
+  background-color: rgba(156, 156, 156, 0.466);
+  backdrop-filter: blur(4px);
+}
+
+
+.cssbuttons {
+  background: #a370f08e;
+  color: white;
+
+
+  font-weight: 400;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 2rem;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #714da6;
+  overflow: hidden;
+  position: relative;
+
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+
+.cssbuttons .icon {
+  background: var(--textSoft);
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #7b52b9;
+}
+
+.cssbuttons:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons:active .icon {
+  transform: scale(0.95);
+}
+
+.component {
+  display: flex;
+
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  color: rgba(230, 230, 250, 0.39);
+  font-size: 14px;
+  position: absolute;
+  bottom: 2%;
+  right: 50%;
+}
+
+.smile {
+  margin-left: 5px;
+  margin-top: 1px;
+}
+
+
+.smile:hover {
+  color: rgba(220, 20, 60, 0.137);
+}
 
 @keyframes rotate {
   from {
     transform: rotate(360deg);
   }
+
   to {
     transform: rotate(0deg);
   }
