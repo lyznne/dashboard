@@ -1,4 +1,4 @@
-import { updateUser } from "@/app/lib/actions-server"
+import { updateUser } from "@/app/lib/actions"
 import { fetchSingleUser } from "@/app/lib/data"
 import styles from "@/app/ui/dashboard/users/singleUser/singleUser.module.css"
 import Image from "next/image"

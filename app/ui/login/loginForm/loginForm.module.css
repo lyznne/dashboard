@@ -26,3 +26,14 @@
     border-radius: 5px;
 
 }
+.form span {
+    margin: 4px 0;
+    color: lavender; 
+    font-size: 13px; 
+    text-align: center; 
+
+}
+.form .anony-btn {
+    background: crimson; 
+
+}

@@ -1,3 +1,6 @@
+"use server"; 
+
+
 import { redirect } from "next/navigation";
 import { Product, User } from "./models";
 import { connectToDB } from "./utils";
@@ -10,9 +13,11 @@ export const addUser = async (formData) => {
 
     const { username, email, password, phone, address, isAdmin, isActive } =
         Object.fromEntries(formData);
+
+    
     try {
         //connect to db
-        connectToDB();
+       await  connectToDB();
         // encryting password using bcrypt .
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -26,12 +31,12 @@ export const addUser = async (formData) => {
             isAdmin,
             isActive,
         });
-
+       
         //saving the new user to database.
         await newUSer.save();
     } catch (err) {
         console.log(err);
-        throw new Error("Failed to create new user");
+        // throw new Error("Failed to create new user");
     }
     revalidatePath("/dashboard/users");
 
@@ -150,7 +155,7 @@ export const updateProduct = async (formData) => {
         Object.fromEntries(formData);
 
     try {
-        connectToDB();
+       await  connectToDB();
 
         const updatedFields = {
             title, cat, price, stock, color, size, desc
@@ -176,11 +181,17 @@ export const updateProduct = async (formData) => {
 
 export const authenticate = async (prevState, formData) => {
     const { username, password } = Object.fromEntries(formData);
-
+  
+  
     try {
-        await signIn("credentials", { username, password });
+     await  connectToDB(); // Connect to the database
+  
+    
+    
+await signIn("credentials", {username, password});
+
     } catch (err) {
-        console.log(err)
-        throw new Error("Wrong credentials!");
+      console.log(err);
+    //   throw new Error('Wrong credentials!');
     }
-};
+  };

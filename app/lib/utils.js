@@ -1,20 +1,17 @@
 import mongoose from "mongoose"
 
 
+
 export const connectToDB = async () => {
 
-    const connection = {}
-    const dbUrl = process.env.MONGO;
+try {
+    const conn =  await mongoose.connect(process.env.MONGO_URL, {})
 
-    try {
-        if (connection.isConnected) return;
+    console.log(`[=] SUCCESS : connected to database on ${conn.connection.host}`)
+} catch (error) {
+    console.error("[-] ERROR : unable tp connec tp Database", error);
+    process.exit(1)
 
-        const db = await mongoose.connect(dbUrl);
-        connection.isConnected = db.connections[0].readyState;
-        console.log("db ==>", db)
-
-    } catch (error) {
-        console.log("error ==>", error);
-        throw new Error(error);
-    }
 }
+}
+
